@@ -1,122 +1,37 @@
 # 🛒 StoryForge
 
-StoryForge is a full-stack social content platform where users can create, share, and interact with stories.  
-The project was built to simulate a real-world product, focusing on authentication, user interaction, and scalable API design.
+StoryForge is a full-stack social story platform with a FastAPI backend and React frontend.
 
-It includes a FastAPI backend, PostgreSQL database, JWT-based authentication, and a React frontend.
+## Structure
 
----
-
-## 🚀 What this project demonstrates
-
-- Designing and building a full-stack application from scratch  
-- Implementing authentication and role-based authorization (user/admin)  
-- Structuring scalable APIs with FastAPI and SQLAlchemy  
-- Handling real-world features like likes, comments, and saved content  
-- Managing file uploads and serving media  
-- Connecting backend and frontend in a clean architecture  
-
----
-
-## 🧰 Tech Stack
-
-### Backend
-- Python + FastAPI  
-- PostgreSQL  
-- SQLAlchemy ORM  
-- Pydantic  
-- JWT authentication (`python-jose`)  
-- Password hashing (`passlib`, `bcrypt`)  
-
-### Frontend
-- React (Vite)  
-- Axios  
-- TailwindCSS  
-- React Router  
-
----
-
-## ✨ Core Features
-
-### Authentication & Security
-- Register / login system  
-- JWT-based authentication  
-- Protected routes  
-- Role-based authorization (user vs admin)  
-
----
-
-### Stories
-- Create, update, delete stories  
-- Publish / unpublish functionality  
-- Image upload support  
-- Public story feed  
-- Search, filtering, and pagination  
-
----
-
-### User Profiles
-- Public user profiles  
-- Editable bio and profile image  
-- View other users’ published stories  
-- Optional public saved stories  
-
----
-
-### Social Interactions
-- Like / unlike stories  
-- Comment on stories  
-- Save (favorite) stories  
-- Prevent duplicate likes and saves  
-
----
-
-### Admin Capabilities
-- View all users  
-- Delete any story or comment  
-- Deactivate user accounts  
-
----
-
-### Media Handling
-- Upload images locally  
-- Store file paths in database  
-- Serve images through FastAPI  
-
----
-
-## 🧠 Key Design Decisions
-
-- **JWT authentication** for stateless and scalable user sessions  
-- **Role-based access control** to separate user and admin permissions  
-- **Relational schema design** to handle user interactions (likes, comments, saved stories)  
-- **Separation of concerns** between backend API and frontend UI  
-- **Local file storage** as a simple and practical first step before cloud storage  
-
----
-
-## 📊 API Overview
-
-Main endpoints include:
-
-- `/auth/*` → authentication  
-- `/users/*` → profiles and search  
-- `/stories/*` → story CRUD and feed  
-- `/comments/*` → interactions  
-- `/likes/*` → engagement  
-- `/admin/*` → moderation  
-
-Interactive API docs available at:
-
-```
-http://127.0.0.1:8000/docs
+```text
+storyforge/
+├── backend/   # FastAPI, SQLAlchemy, PostgreSQL, JWT auth
+├── frontend/  # React, Axios, TailwindCSS
+└── run-dev.sh # Starts PostgreSQL, backend, and frontend together
 ```
 
----
+## Run Everything
 
-## ⚙️ Running the project
+From this folder:
 
-### Backend
+```bash
+./run-dev.sh
+```
+
+This starts:
+
+- PostgreSQL with Homebrew
+- FastAPI backend at `http://127.0.0.1:8000`
+- React frontend at `http://127.0.0.1:5173`
+
+Swagger docs are available at `http://127.0.0.1:8000/docs`.
+
+Uploaded profile and story images are saved locally in `backend/uploads/` and served from `http://127.0.0.1:8000/uploads/...`.
+
+## Manual Run
+
+Backend:
 
 ```bash
 cd backend
