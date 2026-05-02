@@ -31,30 +31,30 @@ export default function UserSearchPage() {
 
   return (
     <section>
-      <h1 className="text-3xl font-semibold">Find users</h1>
-      <p className="mt-2 text-sm leading-6 text-[#69756d]">
+      <h1 className="text-3xl font-bold text-[#111827]">Find users</h1>
+      <p className="mt-2 text-sm font-medium leading-6 text-[#64748b]">
         Search by username or email and open public profiles.
       </p>
 
       <form
         onSubmit={searchUsers}
-        className="mt-6 grid gap-3 rounded-md border border-[#dde1d8] bg-[#fbfaf6] p-4 sm:grid-cols-[1fr_auto]"
+        className="sf-panel mt-6 grid gap-3 rounded-md p-4 sm:grid-cols-[1fr_auto]"
       >
         <input
           value={query}
           onChange={(event) => setQuery(event.target.value)}
           placeholder="Search users"
-          className="rounded-md border border-[#cfd8cf] bg-white px-3 py-2 outline-none focus:border-[#246344]"
+          className="sf-focus rounded-md border border-[#bfdbfe] bg-white px-3 py-2 outline-none"
         />
         <button
-          className="inline-flex items-center justify-center gap-2 rounded-md bg-[#183d2b] px-4 py-2 font-medium text-white hover:bg-[#246344]"
+          className="inline-flex items-center justify-center gap-2 rounded-md bg-[#1d4ed8] px-4 py-2 font-semibold text-white shadow-sm hover:bg-[#2563eb]"
           type="submit"
         >
           <Search size={16} /> Search
         </button>
       </form>
 
-      {error && <p className="mt-4 rounded-md bg-[#f7e8e2] px-3 py-2 text-sm text-[#9b2f20]">{error}</p>}
+      {error && <p className="mt-4 rounded-md bg-[#eff6ff] px-3 py-2 text-sm font-medium text-[#1e40af]">{error}</p>}
 
       <div className="mt-6 grid gap-3">
         {users.length ? (
@@ -62,14 +62,14 @@ export default function UserSearchPage() {
             <Link
               key={user.id}
               to={`/users/${user.id}`}
-              className="flex items-center gap-4 rounded-md border border-[#dde1d8] bg-[#fbfaf6] p-4 hover:bg-[#f0f3ed]"
+              className="sf-panel sf-pop flex items-center gap-4 rounded-md p-4"
             >
-              <span className="grid h-12 w-12 place-items-center rounded-md bg-[#dce9df] text-[#183d2b]">
+              <span className="grid h-12 w-12 place-items-center rounded-md bg-[#dbeafe] text-[#1d4ed8]">
                 <UserRound size={22} />
               </span>
               <span>
                 <span className="block font-semibold">{user.username}</span>
-                <span className="block text-sm text-[#69756d]">{user.bio || "No bio yet."}</span>
+                <span className="block text-sm font-medium text-[#64748b]">{user.bio || "No bio yet."}</span>
               </span>
             </Link>
           ))

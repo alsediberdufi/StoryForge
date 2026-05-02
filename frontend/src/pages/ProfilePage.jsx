@@ -132,18 +132,18 @@ export default function ProfilePage() {
   }
 
   if (error && !profile) {
-    return <p className="rounded-md bg-[#f7e8e2] px-3 py-2 text-sm text-[#9b2f20]">{error}</p>;
+    return <p className="rounded-md bg-[#eff6ff] px-3 py-2 text-sm font-medium text-[#1e40af]">{error}</p>;
   }
 
   if (!profile) {
-    return <p className="text-sm text-[#69756d]">Loading profile...</p>;
+    return <p className="text-sm font-medium text-[#64748b]">Loading profile...</p>;
   }
 
   return (
     <section>
-      <div className="rounded-md border border-[#dde1d8] bg-[#fbfaf6] p-6">
+      <div className="sf-panel overflow-hidden rounded-md border-t-4 border-t-[#60a5fa] p-6">
         <div className="flex flex-col gap-4 sm:flex-row sm:items-center">
-          <div className="grid h-20 w-20 place-items-center rounded-md bg-[#dce9df] text-2xl font-semibold text-[#183d2b]">
+          <div className="grid h-20 w-20 place-items-center rounded-md bg-[#dbeafe] text-2xl font-bold text-[#1d4ed8] shadow-sm">
             {profile.profile_image_url ? (
               <img src={profile.profile_image_url} alt="" className="h-full w-full rounded-md object-cover" />
             ) : (
@@ -151,16 +151,16 @@ export default function ProfilePage() {
             )}
           </div>
           <div>
-            <h1 className="text-3xl font-semibold">{profile.username}</h1>
-            <p className="mt-2 max-w-2xl text-sm leading-6 text-[#69756d]">{profile.bio || "No bio yet."}</p>
-            <p className="mt-2 text-xs text-[#69756d]">
+            <h1 className="text-3xl font-bold">{profile.username}</h1>
+            <p className="mt-2 max-w-2xl text-sm font-medium leading-6 text-[#64748b]">{profile.bio || "No bio yet."}</p>
+            <p className="mt-2 text-xs font-semibold text-[#1d4ed8]">
               Saved stories are {profile.saved_stories_public ? "public" : "private"}
             </p>
           </div>
           {isOwnProfile && (
             <button
               onClick={() => setEditing((current) => !current)}
-              className="w-fit rounded-md border border-[#cfd8cf] px-4 py-2 text-sm font-medium hover:bg-[#e7eee8] sm:ml-auto"
+              className="w-fit rounded-md border border-[#bfdbfe] bg-white px-4 py-2 text-sm font-semibold hover:bg-[#dbeafe] sm:ml-auto"
               type="button"
             >
               {editing ? "Cancel" : "Edit profile"}
@@ -169,7 +169,7 @@ export default function ProfilePage() {
         </div>
 
         {editing && (
-          <form onSubmit={saveProfile} className="mt-6 grid gap-4 border-t border-[#dde1d8] pt-5">
+          <form onSubmit={saveProfile} className="mt-6 grid gap-4 border-t border-[#dbeafe] pt-5">
             <label className="text-sm font-medium">
               Bio
               <textarea
@@ -177,7 +177,7 @@ export default function ProfilePage() {
                 value={profileForm.bio}
                 onChange={updateProfileField}
                 rows={4}
-                className="mt-2 w-full rounded-md border border-[#cfd8cf] bg-white px-3 py-2 outline-none focus:border-[#246344]"
+                className="sf-focus mt-2 w-full rounded-md border border-[#bfdbfe] bg-white px-3 py-2 outline-none"
                 placeholder="Tell readers about yourself"
               />
             </label>
@@ -187,14 +187,14 @@ export default function ProfilePage() {
                 type="file"
                 accept="image/png,image/jpeg,image/webp,image/gif"
                 onChange={updateProfileImage}
-                className="mt-2 w-full rounded-md border border-[#cfd8cf] bg-white px-3 py-2 text-sm outline-none focus:border-[#246344]"
+                className="sf-focus mt-2 w-full rounded-md border border-[#bfdbfe] bg-white px-3 py-2 text-sm outline-none"
               />
             </label>
             {profileImagePreview && (
               <img
                 src={profileImagePreview}
                 alt=""
-                className="h-32 w-32 rounded-md border border-[#dde1d8] object-cover"
+                className="h-32 w-32 rounded-md border border-[#bfdbfe] object-cover shadow-sm"
               />
             )}
             <label className="inline-flex items-center gap-2 text-sm font-medium">
@@ -203,12 +203,12 @@ export default function ProfilePage() {
                 type="checkbox"
                 checked={profileForm.saved_stories_public}
                 onChange={updateProfileField}
-                className="h-4 w-4 accent-[#246344]"
+                className="h-4 w-4 accent-[#2563eb]"
               />
               Make saved stories public
             </label>
             <button
-              className="w-fit rounded-md bg-[#183d2b] px-4 py-2 text-sm font-medium text-white hover:bg-[#246344]"
+              className="w-fit rounded-md bg-[#1d4ed8] px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-[#2563eb]"
               type="submit"
             >
               Save profile
@@ -217,8 +217,8 @@ export default function ProfilePage() {
         )}
       </div>
 
-      {success && <p className="mt-4 rounded-md bg-[#e7eee8] px-3 py-2 text-sm text-[#246344]">{success}</p>}
-      {error && <p className="mt-4 rounded-md bg-[#f7e8e2] px-3 py-2 text-sm text-[#9b2f20]">{error}</p>}
+      {success && <p className="mt-4 rounded-md bg-[#dbeafe] px-3 py-2 text-sm font-medium text-[#2563eb]">{success}</p>}
+      {error && <p className="mt-4 rounded-md bg-[#eff6ff] px-3 py-2 text-sm font-medium text-[#1e40af]">{error}</p>}
 
       <div className="mt-8 grid gap-8 lg:grid-cols-[1fr_360px]">
         <section>
@@ -245,13 +245,13 @@ export default function ProfilePage() {
           <div className="mt-4 grid gap-3">
             {saved.length ? (
               saved.map((item) => (
-                <Link key={item.id} to={`/stories/${item.story_id}`} className="rounded-md border border-[#dde1d8] bg-[#fbfaf6] p-4 hover:bg-[#f0f3ed]">
+                <Link key={item.id} to={`/stories/${item.story_id}`} className="sf-panel sf-pop rounded-md p-4">
                   <span className="block font-medium">{item.story.title}</span>
-                  <span className="mt-1 block text-xs text-[#69756d]">{item.story.category || "Uncategorized"}</span>
+                  <span className="mt-1 block text-xs font-semibold text-[#1d4ed8]">{item.story.category || "Uncategorized"}</span>
                 </Link>
               ))
             ) : (
-              <p className="rounded-md border border-[#dde1d8] bg-[#fbfaf6] p-4 text-sm text-[#69756d]">
+              <p className="sf-panel rounded-md p-4 text-sm font-medium text-[#64748b]">
                 No visible saved stories.
               </p>
             )}

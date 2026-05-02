@@ -6,7 +6,7 @@ export default function ProtectedRoute({ adminOnly = false, children }) {
   const { user, loading, isAdmin } = useAuth();
 
   if (loading) {
-    return <p className="text-sm text-[#69756d]">Loading session...</p>;
+    return <p className="text-sm text-[#64748b]">Loading session...</p>;
   }
 
   if (!user) {

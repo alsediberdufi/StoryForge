@@ -90,15 +90,15 @@ export default function StoryFormPage({ editMode = false }) {
 
   return (
     <section className="mx-auto max-w-3xl">
-      <h1 className="text-3xl font-semibold">{editMode ? "Edit story" : "Write a story"}</h1>
-      <form onSubmit={handleSubmit} className="mt-6 grid gap-4 rounded-md border border-[#dde1d8] bg-[#fbfaf6] p-5">
+      <h1 className="text-3xl font-bold text-[#111827]">{editMode ? "Edit story" : "Write a story"}</h1>
+      <form onSubmit={handleSubmit} className="sf-panel mt-6 grid gap-4 rounded-md p-5">
         <label className="text-sm font-medium">
           Title
           <input
             name="title"
             value={form.title}
             onChange={updateField}
-            className="mt-2 w-full rounded-md border border-[#cfd8cf] bg-white px-3 py-2 outline-none focus:border-[#246344]"
+            className="sf-focus mt-2 w-full rounded-md border border-[#bfdbfe] bg-white px-3 py-2 outline-none"
             required
           />
         </label>
@@ -110,7 +110,7 @@ export default function StoryFormPage({ editMode = false }) {
             value={form.content}
             onChange={updateField}
             rows={12}
-            className="mt-2 w-full resize-y rounded-md border border-[#cfd8cf] bg-white px-3 py-2 leading-6 outline-none focus:border-[#246344]"
+            className="sf-focus mt-2 w-full resize-y rounded-md border border-[#bfdbfe] bg-white px-3 py-2 leading-6 outline-none"
             required
           />
         </label>
@@ -122,7 +122,7 @@ export default function StoryFormPage({ editMode = false }) {
               type="file"
               accept="image/png,image/jpeg,image/webp,image/gif"
               onChange={updateImage}
-              className="mt-2 w-full rounded-md border border-[#cfd8cf] bg-white px-3 py-2 text-sm outline-none focus:border-[#246344]"
+              className="sf-focus mt-2 w-full rounded-md border border-[#bfdbfe] bg-white px-3 py-2 text-sm outline-none"
             />
           </label>
           <label className="text-sm font-medium">
@@ -131,7 +131,7 @@ export default function StoryFormPage({ editMode = false }) {
               name="category"
               value={form.category}
               onChange={updateField}
-              className="mt-2 w-full rounded-md border border-[#cfd8cf] bg-white px-3 py-2 outline-none focus:border-[#246344]"
+              className="sf-focus mt-2 w-full rounded-md border border-[#bfdbfe] bg-white px-3 py-2 outline-none"
             />
           </label>
         </div>
@@ -140,7 +140,7 @@ export default function StoryFormPage({ editMode = false }) {
           <img
             src={imagePreview}
             alt=""
-            className="h-64 w-full rounded-md border border-[#dde1d8] object-cover"
+            className="h-64 w-full rounded-md border border-[#bfdbfe] object-cover shadow-sm"
           />
         )}
 
@@ -150,16 +150,16 @@ export default function StoryFormPage({ editMode = false }) {
             type="checkbox"
             checked={form.is_published}
             onChange={updateField}
-            className="h-4 w-4 accent-[#246344]"
+            className="h-4 w-4 accent-[#2563eb]"
           />
           Publish now
         </label>
 
-        {error && <p className="rounded-md bg-[#f7e8e2] px-3 py-2 text-sm text-[#9b2f20]">{error}</p>}
+        {error && <p className="rounded-md bg-[#eff6ff] px-3 py-2 text-sm font-medium text-[#1e40af]">{error}</p>}
 
         <button
           disabled={submitting}
-          className="rounded-md bg-[#183d2b] px-4 py-2 font-medium text-white hover:bg-[#246344] disabled:opacity-60"
+          className="rounded-md bg-[#1d4ed8] px-4 py-2 font-semibold text-white shadow-sm hover:bg-[#2563eb] disabled:opacity-60"
           type="submit"
         >
           {submitting ? "Saving..." : "Save story"}

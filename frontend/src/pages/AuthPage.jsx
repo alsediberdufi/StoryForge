@@ -43,12 +43,12 @@ export default function AuthPage({ mode }) {
 
   return (
     <section className="mx-auto max-w-md">
-      <h1 className="text-3xl font-semibold">{isRegister ? "Create your account" : "Welcome back"}</h1>
-      <p className="mt-2 text-sm leading-6 text-[#69756d]">
+      <h1 className="text-3xl font-bold text-[#111827]">{isRegister ? "Create your account" : "Welcome back"}</h1>
+      <p className="mt-2 text-sm font-medium leading-6 text-[#64748b]">
         {isRegister ? "Join StoryForge and publish your first story." : "Log in with your email and password."}
       </p>
 
-      <form onSubmit={handleSubmit} className="mt-6 rounded-md border border-[#dde1d8] bg-[#fbfaf6] p-5">
+      <form onSubmit={handleSubmit} className="sf-panel mt-6 rounded-md p-5">
         {isRegister && (
           <label className="mb-4 block text-sm font-medium">
             Username
@@ -57,7 +57,7 @@ export default function AuthPage({ mode }) {
               value={form.username}
               onChange={updateField}
               minLength={3}
-              className="mt-2 w-full rounded-md border border-[#cfd8cf] bg-white px-3 py-2 outline-none focus:border-[#246344]"
+              className="sf-focus mt-2 w-full rounded-md border border-[#bfdbfe] bg-white px-3 py-2 outline-none"
               required
             />
           </label>
@@ -69,7 +69,7 @@ export default function AuthPage({ mode }) {
             type="email"
             value={form.email}
             onChange={updateField}
-            className="mt-2 w-full rounded-md border border-[#cfd8cf] bg-white px-3 py-2 outline-none focus:border-[#246344]"
+            className="sf-focus mt-2 w-full rounded-md border border-[#bfdbfe] bg-white px-3 py-2 outline-none"
             required
           />
         </label>
@@ -81,25 +81,25 @@ export default function AuthPage({ mode }) {
             value={form.password}
             onChange={updateField}
             minLength={8}
-            className="mt-2 w-full rounded-md border border-[#cfd8cf] bg-white px-3 py-2 outline-none focus:border-[#246344]"
+            className="sf-focus mt-2 w-full rounded-md border border-[#bfdbfe] bg-white px-3 py-2 outline-none"
             required
           />
         </label>
 
-        {error && <p className="mt-4 rounded-md bg-[#f7e8e2] px-3 py-2 text-sm text-[#9b2f20]">{error}</p>}
+        {error && <p className="mt-4 rounded-md bg-[#eff6ff] px-3 py-2 text-sm font-medium text-[#1e40af]">{error}</p>}
 
         <button
           disabled={submitting}
-          className="mt-5 w-full rounded-md bg-[#183d2b] px-4 py-2 font-medium text-white hover:bg-[#246344] disabled:opacity-60"
+          className="mt-5 w-full rounded-md bg-[#1d4ed8] px-4 py-2 font-semibold text-white shadow-sm hover:bg-[#2563eb] disabled:opacity-60"
           type="submit"
         >
           {submitting ? "Working..." : isRegister ? "Register" : "Login"}
         </button>
       </form>
 
-      <p className="mt-4 text-sm text-[#69756d]">
+      <p className="mt-4 text-sm font-medium text-[#64748b]">
         {isRegister ? "Already have an account?" : "New to StoryForge?"}{" "}
-        <Link className="font-medium text-[#246344]" to={isRegister ? "/login" : "/register"}>
+        <Link className="font-bold text-[#1d4ed8]" to={isRegister ? "/login" : "/register"}>
           {isRegister ? "Log in" : "Create one"}
         </Link>
       </p>

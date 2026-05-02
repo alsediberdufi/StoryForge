@@ -31,13 +31,13 @@ export default function AdminPage() {
   return (
     <section>
       <h1 className="text-3xl font-semibold">Admin moderation</h1>
-      <p className="mt-2 text-sm text-[#69756d]">View users and deactivate accounts.</p>
+      <p className="mt-2 text-sm text-[#64748b]">View users and deactivate accounts.</p>
 
-      {error && <p className="mt-4 rounded-md bg-[#f7e8e2] px-3 py-2 text-sm text-[#9b2f20]">{error}</p>}
+      {error && <p className="mt-4 rounded-md bg-[#eff6ff] px-3 py-2 text-sm text-[#1e40af]">{error}</p>}
 
-      <div className="mt-6 overflow-hidden rounded-md border border-[#dde1d8] bg-[#fbfaf6]">
+      <div className="mt-6 overflow-hidden rounded-md border border-[#dbeafe] bg-[#ffffff]">
         <table className="w-full border-collapse text-left text-sm">
-          <thead className="bg-[#edf1eb] text-[#4b5b51]">
+          <thead className="bg-[#eff6ff] text-[#475569]">
             <tr>
               <th className="px-4 py-3 font-medium">User</th>
               <th className="px-4 py-3 font-medium">Email</th>
@@ -48,16 +48,16 @@ export default function AdminPage() {
           </thead>
           <tbody>
             {users.map((user) => (
-              <tr key={user.id} className="border-t border-[#dde1d8]">
+              <tr key={user.id} className="border-t border-[#dbeafe]">
                 <td className="px-4 py-3 font-medium">{user.username}</td>
-                <td className="px-4 py-3 text-[#69756d]">{user.email}</td>
+                <td className="px-4 py-3 text-[#64748b]">{user.email}</td>
                 <td className="px-4 py-3">{user.role}</td>
                 <td className="px-4 py-3">{user.is_active ? "Active" : "Inactive"}</td>
                 <td className="px-4 py-3">
                   <button
                     disabled={!user.is_active}
                     onClick={() => deactivateUser(user.id)}
-                    className="rounded-md border border-[#e1c6bd] px-3 py-2 text-sm text-[#9b2f20] hover:bg-[#f7e8e2] disabled:opacity-50"
+                    className="rounded-md border border-[#bfdbfe] px-3 py-2 text-sm text-[#1e40af] hover:bg-[#eff6ff] disabled:opacity-50"
                     type="button"
                   >
                     Deactivate
